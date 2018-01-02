@@ -1,0 +1,22 @@
+{
+  // Поместите параметры в этот файл, чтобы перезаписать параметры по умолчанию.
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "emmet.syntaxProfiles": {
+    "vue-html": "html",
+    "vue": "html"
+  },
+  "files.autoSave": "onFocusChange",
+  "window.openFilesInNewWindow": "on",
+  "files.eol": "\n",
+  "eslint.enable": true,
+  "eslint.autoFixOnSave": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.formatOnSave": true,
+  // "window.zoomLevel": 0,
+  // "[javascript]": {},
+  "files.associations": {
+    "*.js": "javascriptreact"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "editor.formatOnSave": true,
+  // "window.zoomLevel": 0,
+  "[javascript]": {},
+  "files.associations": {
+    "*.js": "javascriptreact"
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "emmet.syntaxProfiles": {
+    "jsx": {
+      "self_closing_tag": true
+    }
+  }
+}
