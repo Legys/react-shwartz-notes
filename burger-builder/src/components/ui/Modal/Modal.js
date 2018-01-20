@@ -6,7 +6,9 @@ import Aux from "../../../hoc/Aux";
 
 class Modal extends Component {
   shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.show !== this.props.show
+    return nextProps.show !== this.props.show || this.props.children !== this.props.children
+  }
+  componentDidUpdate(prevProps, prevState) {
     console.log('modal will update')
   }
   render() {
