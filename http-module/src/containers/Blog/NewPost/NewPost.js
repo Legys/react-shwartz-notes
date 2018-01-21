@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
-import axios from '../../axios'
+import axios from '../../../axios'
 import './NewPost.css';
 
 class NewPost extends Component {
   state = {
     title: '',
     content: '',
-    author: 'Max'
+    author: 'Max',
   }
-  postDataHandler = () => {
+  componentDidMount() {
+    console.log(this.props)
+  }
+  postDataHandler = async () => {
     const post = {
       title: this.state.title,
       body: this.state.content,
       author: this.state.author
     }
-    axios.post('/posts', post)
-
+    await axios.post('/posts', post)
+    this.props.history.push('/posts')
   }
   render() {
     return (
@@ -31,7 +34,7 @@ class NewPost extends Component {
           <option value="Manu">Manu</option>
         </select>
         <button onClick={() => this.postDataHandler()}>Add Post</button>
-      </div>
+      </div >
     );
   }
 }
