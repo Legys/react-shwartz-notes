@@ -2,8 +2,9 @@ import React from "react";
 
 import Aux from "../../../hoc/Aux";
 import Button from "../../ui/Button/Button";
+import { Link } from 'react-router-dom'
 
-export default props => {
+const orderSummary = props => {
   const ingredientSummary = Object.keys(props.ingredients).map(igKey => {
     return (
       <li key={igKey}>
@@ -28,3 +29,5 @@ export default props => {
     </Aux>
   );
 };
+
+export default orderSummary;
