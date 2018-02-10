@@ -8,7 +8,6 @@ const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case actionTypes.ADD_PERSON:
       const newPersons = [...state.persons];
-      console.log(newPersons);
       newPersons.push(payload.person);
       return {
         ...state,
