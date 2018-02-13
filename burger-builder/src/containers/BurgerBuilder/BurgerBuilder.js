@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "../../store/actions";
+import * as actions from "../../store/actions/index";
 
 import axios from "axios";
 import Burger from "../../components/Burger/Burger";
@@ -13,11 +13,10 @@ import Spinner from "../../components/ui/Spinner/Spinner";
 
 class BurgerBuilder extends Component {
   state = {
-    purchasing: false,
-    loading: false,
-    error: false
+    purchasing: false
   };
   async componentDidMount() {
+    this.props.onInitIngredients();
     // try {
     //   const response = await axios.get('/ingredients.json')
     //   this.setState({ ingredients: response.data })
@@ -31,6 +30,7 @@ class BurgerBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
+    this.props.onInitPurchase();
     this.props.history.push({
       pathname: "/checkout"
     });
@@ -88,7 +88,7 @@ class BurgerBuilder extends Component {
     if (this.state.loading) {
       orderSummary = <Spinner />;
     }
-    let burger = this.state.error ? (
+    let burger = this.props.error ? (
       <p> Ingredients can't be loaded</p>
     ) : (
       <Spinner />
@@ -128,16 +128,18 @@ class BurgerBuilder extends Component {
 
 const mapStateToProps = state => {
   return {
-    ings: state.ingredients,
-    totalPrice: state.totalPrice
+    ings: state.burgerBuilder.ingredients,
+    totalPrice: state.burgerBuilder.totalPrice,
+    error: state.burgerBuilder.error
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onIngredientAdded: ingName =>
-      dispatch({ type: actions.ADD_INGREDIENT, ingredientName: ingName }),
+    onIngredientAdded: ingName => dispatch(actions.addIngredient(ingName)),
     onIngredientRemoved: ingName =>
-      dispatch({ type: actions.REMOVE_INGREDIENT, ingredientName: ingName })
+      dispatch(dispatch(actions.removeIngredient(ingName))),
+    onInitIngredients: () => dispatch(actions.initIngredients()),
+    onInitPurchase: () => dispatch(actions.purchaseInit())
   };
 };
 
